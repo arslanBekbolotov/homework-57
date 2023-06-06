@@ -11,10 +11,10 @@ const App = () => {
     };
 
     return (
-        <>
+        <div className="row p-5 justify-content-center">
             <UserForm onSubmit={addDish}/>
             <Users users={users}/>
-        </>
+        </div>
 );
 };
 

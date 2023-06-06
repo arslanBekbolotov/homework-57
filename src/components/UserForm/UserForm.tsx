@@ -31,7 +31,7 @@ const UserForm:React.FC<IProps> = ({onSubmit}) => {
     };
 
     return (
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit} className="col-5">
             <div className="mb-3">
                 <label htmlFor="formName" className="form-label">Name</label>
                 <input
