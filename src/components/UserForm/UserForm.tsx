@@ -10,7 +10,7 @@ const UserForm:React.FC<IProps> = ({onSubmit}) => {
     const [user, setUser] = useState<IUserMutation>({
         name: '',
         email: '',
-        active: '',
+        active: false,
         role: '',
     });
 
@@ -18,12 +18,15 @@ const UserForm:React.FC<IProps> = ({onSubmit}) => {
         setUser(prev => ({...prev, [e.target.name]: e.target.value}));
     };
 
+    const onChangeFormCheckbox =(e: React.ChangeEvent<HTMLInputElement>)=>{
+        setUser(prev => ({...prev, active: e.target.checked}));
+    }
+
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         onSubmit({
             id: nanoid(),
-            ...user,
-            active:Boolean(user.active),
+            ...user
         });
     };
 
@@ -55,7 +58,7 @@ const UserForm:React.FC<IProps> = ({onSubmit}) => {
                 value={user.role}
                 name="role"
                 onChange={onChangeForm}>
-                <option value="show"  disabled>Open this select menu</option>
+                <option value="show" disabled>Open this select menu</option>
                 <option value="user">user</option>
                 <option value="editor">editor</option>
                 <option value="admin">admin</option>
@@ -63,11 +66,10 @@ const UserForm:React.FC<IProps> = ({onSubmit}) => {
             <div className="mb-3 form-check">
                 <input
                     type="checkbox"
-                    value={user.active}
                     name="active"
                     className="form-check-input"
                     id="formCheck"
-                    onChange={onChangeForm}/>
+                    onChange={onChangeFormCheckbox}/>
                 <label className="form-check-label" htmlFor="formCheck">Activate</label>
             </div>
             <button type="submit" className="btn btn-primary">Create</button>

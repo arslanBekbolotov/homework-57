@@ -9,6 +9,6 @@ export interface IUser {
 export interface IUserMutation{
     name:string;
     email:string;
-    active:string;
+    active:boolean;
     role:string;
 }
