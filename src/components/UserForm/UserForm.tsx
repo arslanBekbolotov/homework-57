@@ -20,10 +20,11 @@ const UserForm:React.FC<IProps> = ({onSubmit}) => {
 
     const onChangeFormCheckbox =(e: React.ChangeEvent<HTMLInputElement>)=>{
         setUser(prev => ({...prev, active: e.target.checked}));
-    }
+    };
 
     const onFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
         onSubmit({
             id: nanoid(),
             ...user

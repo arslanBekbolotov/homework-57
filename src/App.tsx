@@ -15,7 +15,7 @@ const App = () => {
             <UserForm onSubmit={addDish}/>
             <Users users={users}/>
         </div>
-);
+    );
 };
 
 export default App;
