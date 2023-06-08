@@ -1,23 +1,29 @@
-import React from 'react';
-import {IUser} from "../../types";
+import React from "react";
+import { IUser } from "../../types";
 
-interface IProps{
-    user:IUser;
+interface IProps {
+  user: IUser;
+  deleteItem: React.MouseEventHandler;
 }
 
-const UserItem:React.FC<IProps> = ({user}) => {
-    return (
-        <div className="card mb-3" key={user.id}>
-            <div className="card-header">
-                User name: {user.name}
-            </div>
-            <div className="card-body">
-                <h5 className="card-title"> User job: {user.role}</h5>
-                <p className="card-text"> User email: {user.email}</p>
-                <p className="card-text">  User active: {user.active.toString()}</p>
-            </div>
+const UserItem: React.FC<IProps> = ({ user, deleteItem }) => {
+  return (
+    <div className="card mb-3" key={user.id}>
+      <div className="card-header d-flex justify-content-between">
+        Name: {user.name}
+        {user.active && <p className="text-success fw-bold">Active</p>}
+      </div>
+      <div className="card-body">
+        <h5 className="card-title">Role: {user.role}</h5>
+        <div className="card-text d-flex justify-content-between">
+          <p>Email: {user.email}</p>
+          <button onClick={deleteItem} className="btn btn-danger">
+            Delete
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default UserItem;
